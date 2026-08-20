@@ -12,39 +12,6 @@ The project was developed as a solution to a 90-minute Detection & Tracking assi
 
 ---
 
-## Result at a Glance
-
-The system reads the video frame by frame, detects vehicles with YOLO11s, and uses ByteTrack to assign a persistent identifier to each vehicle. It then builds a position-and-size history for every track and selects the frame with the lowest estimated camera distance.
-
-```text
-Video
-  -> OpenCV
-  -> YOLO11s detection
-  -> ByteTrack tracking
-  -> detections grouped by track_id
-  -> camera calibration
-  -> closest-frame calculation
-  -> CSV / JSON / plots / HTML / annotated video
-```
-
-A simplified result for one vehicle looks like this:
-
-```json
-{
-  "track_id": 24,
-  "class": "car",
-  "closest_frame": 326,
-  "timestamp_hms": "00:10.869",
-  "x1": 892,
-  "y1": 1524,
-  "x2": 1662,
-  "y2": 2135,
-  "distance_m": 9.9
-}
-```
-
----
-
 ## Running the Project
 
 ### Requirements
@@ -95,6 +62,39 @@ http://127.0.0.1:8000/docs
 ```
 
 Each execution creates a new `output/job_XXXX` directory.
+
+---
+
+## Result at a Glance
+
+The system reads the video frame by frame, detects vehicles with YOLO11s, and uses ByteTrack to assign a persistent identifier to each vehicle. It then builds a position-and-size history for every track and selects the frame with the lowest estimated camera distance.
+
+```text
+Video
+  -> OpenCV
+  -> YOLO11s detection
+  -> ByteTrack tracking
+  -> detections grouped by track_id
+  -> camera calibration
+  -> closest-frame calculation
+  -> CSV / JSON / plots / HTML / annotated video
+```
+
+A simplified result for one vehicle looks like this:
+
+```json
+{
+  "track_id": 24,
+  "class": "car",
+  "closest_frame": 326,
+  "timestamp_hms": "00:10.869",
+  "x1": 892,
+  "y1": 1524,
+  "x2": 1662,
+  "y2": 2135,
+  "distance_m": 9.9
+}
+```
 
 ---
 
